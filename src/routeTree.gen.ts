@@ -10,33 +10,73 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as KontaktRouteImport } from './routes/kontakt'
+import { Route as PoptavkaRouteImport } from './routes/poptavka'
+import { Route as ReferenceRouteImport } from './routes/reference'
+import { Route as SortimentRouteImport } from './routes/sortiment'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const KontaktRoute = KontaktRouteImport.update({
+  id: '/kontakt',
+  path: '/kontakt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PoptavkaRoute = PoptavkaRouteImport.update({
+  id: '/poptavka',
+  path: '/poptavka',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReferenceRoute = ReferenceRouteImport.update({
+  id: '/reference',
+  path: '/reference',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SortimentRoute = SortimentRouteImport.update({
+  id: '/sortiment',
+  path: '/sortiment',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/kontakt': typeof KontaktRoute
+  '/poptavka': typeof PoptavkaRoute
+  '/reference': typeof ReferenceRoute
+  '/sortiment': typeof SortimentRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/kontakt': typeof KontaktRoute
+  '/poptavka': typeof PoptavkaRoute
+  '/reference': typeof ReferenceRoute
+  '/sortiment': typeof SortimentRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/kontakt': typeof KontaktRoute
+  '/poptavka': typeof PoptavkaRoute
+  '/reference': typeof ReferenceRoute
+  '/sortiment': typeof SortimentRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/kontakt' | '/poptavka' | '/reference' | '/sortiment'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/kontakt' | '/poptavka' | '/reference' | '/sortiment'
+  id: '__root__' | '/' | '/kontakt' | '/poptavka' | '/reference' | '/sortiment'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  KontaktRoute: typeof KontaktRoute
+  PoptavkaRoute: typeof PoptavkaRoute
+  ReferenceRoute: typeof ReferenceRoute
+  SortimentRoute: typeof SortimentRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +88,43 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/kontakt': {
+      id: '/kontakt'
+      path: '/kontakt'
+      fullPath: '/kontakt'
+      preLoaderRoute: typeof KontaktRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/poptavka': {
+      id: '/poptavka'
+      path: '/poptavka'
+      fullPath: '/poptavka'
+      preLoaderRoute: typeof PoptavkaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reference': {
+      id: '/reference'
+      path: '/reference'
+      fullPath: '/reference'
+      preLoaderRoute: typeof ReferenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sortiment': {
+      id: '/sortiment'
+      path: '/sortiment'
+      fullPath: '/sortiment'
+      preLoaderRoute: typeof SortimentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  KontaktRoute: KontaktRoute,
+  PoptavkaRoute: PoptavkaRoute,
+  ReferenceRoute: ReferenceRoute,
+  SortimentRoute: SortimentRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
