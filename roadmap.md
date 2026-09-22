@@ -4,4 +4,4 @@
 - [x] Stránka Sortiment
 - [x] Stránka Reference
 - [x] Stránky Poptávka a Kontakt s formuláři
-- [ ] Kontrola sestavení a responzivního zobrazení
+- [x] Kontrola sestavení a responzivního zobrazení

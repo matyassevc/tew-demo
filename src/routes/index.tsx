@@ -24,7 +24,7 @@ function Index() {
   return (
     <>
       <section className="relative grid min-h-[680px] items-end overflow-hidden bg-placeholder lg:min-h-[720px]">
-        <div className="absolute inset-0 grid place-items-center text-xs font-semibold uppercase text-placeholder-foreground">[ hero foto ]</div>
+        <div className="absolute inset-x-0 top-28 text-center text-xs font-semibold uppercase text-placeholder-foreground sm:top-36">[ hero foto ]</div>
         <div className="absolute inset-0 bg-foreground/55" />
         <div className="relative mx-auto w-full max-w-7xl px-5 pb-16 sm:px-8 sm:pb-20 lg:px-12 lg:pb-24">
           <p className="text-xs font-extrabold uppercase text-primary-foreground">TOP EURO WINDOWS · Kostelec u Kyjova</p>

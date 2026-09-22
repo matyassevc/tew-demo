@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { PageIntro, PhotoPlaceholder } from "@/components/site-layout";
 import { products } from "@/lib/site-content";
@@ -24,9 +24,9 @@ function SortimentPage() {
           <div className="border-b border-border py-6">
             <h2 className="text-2xl font-extrabold">{product.name}</h2>
             <p className="mt-3 min-h-[4.5rem] text-sm leading-6 text-muted-foreground">{product.description}</p>
-            <a href="#poptavka" className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-primary">
+            <Link to="/poptavka" className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-primary">
               Více informací <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </a>
+            </Link>
           </div>
         </article>)}
       </div>
