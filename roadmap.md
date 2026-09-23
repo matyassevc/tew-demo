@@ -5,3 +5,5 @@
 - [x] Stránka Reference
 - [x] Stránky Poptávka a Kontakt s formuláři
 - [x] Kontrola sestavení a responzivního zobrazení
+- [x] Redakční redesign a obsáhlejší úvodní stránka
+- [x] Samostatné podstránky všech devíti produktů
