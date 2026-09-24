@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { PhotoPlaceholder } from "@/components/site-layout";
+import { PageIntro, PhotoPlaceholder, ProductEyebrow } from "@/components/site-layout";
 import { products } from "@/lib/site-content";
 
 export const Route = createFileRoute("/sortiment/$slug")({

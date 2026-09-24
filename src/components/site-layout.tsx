@@ -118,6 +118,17 @@ export function PageIntro({ eyebrow, title, text }: { eyebrow: string; title: st
   );
 }
 
+export function ProductEyebrow({ index, category, className = "" }: { index: number; category: string; className?: string }) {
+  const number = String(index + 1).padStart(2, "0");
+  return (
+    <div className={`flex items-center gap-3 ${className}`}>
+      <span className="grid h-6 w-6 shrink-0 place-items-center border border-primary/35 text-[10px] font-extrabold leading-none tabular-nums text-primary">{number}</span>
+      <span className="h-3 w-px shrink-0 bg-primary/30" aria-hidden="true" />
+      <span className="truncate text-[11px] font-extrabold uppercase leading-none tracking-[0.16em] text-primary">{category}</span>
+    </div>
+  );
+}
+
 export function PhotoPlaceholder({ label = "[ foto ]", className = "" }: { label?: string; className?: string }) {
   return (
     <div className={`grid place-items-center bg-placeholder text-xs font-semibold uppercase text-placeholder-foreground ${className}`}>
