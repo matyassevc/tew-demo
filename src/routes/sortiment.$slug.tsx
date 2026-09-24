@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { PhotoPlaceholder } from "@/components/site-layout";
+import { PhotoPlaceholder, ProductEyebrow } from "@/components/site-layout";
 import { products } from "@/lib/site-content";
 
 export const Route = createFileRoute("/sortiment/$slug")({
@@ -32,7 +32,7 @@ function ProductDetailPage() {
       <section className="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-20 lg:px-12 lg:py-28">
         <Link to="/sortiment" className="inline-flex items-center gap-2 text-sm font-bold text-muted-foreground hover:text-primary"><ArrowLeft className="h-4 w-4" /> Zpět na sortiment</Link>
         <div className="mt-12 grid gap-10 lg:grid-cols-12 lg:items-end">
-          <div className="lg:col-span-8"><p className="section-label">0{index + 1} · {product.category}</p><h1 className="mt-7 text-5xl font-extrabold leading-[0.98] sm:text-7xl lg:text-8xl">{product.name}</h1></div>
+          <div className="lg:col-span-8"><ProductEyebrow index={index} category={product.category} /><h1 className="mt-7 text-5xl font-extrabold leading-[0.98] sm:text-7xl lg:text-8xl">{product.name}</h1></div>
           <p className="border-l border-primary pl-6 text-lg leading-8 text-muted-foreground lg:col-span-4">{product.description}</p>
         </div>
         <PhotoPlaceholder label="[ produkt foto ]" className="mt-14 aspect-[4/3] sm:aspect-[16/8]" />
