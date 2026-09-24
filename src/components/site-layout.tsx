@@ -1,6 +1,7 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
+import { Reveal } from "@/components/reveal";
 
 const navigation = [
   { label: "Společnost", to: "/" },
@@ -108,11 +109,11 @@ export function PageIntro({ eyebrow, title, text }: { eyebrow: string; title: st
   return (
     <section className="border-b border-border bg-background">
       <div className="mx-auto grid max-w-7xl gap-8 px-5 py-16 sm:px-8 sm:py-24 lg:grid-cols-12 lg:px-12 lg:py-28">
-        <p className="section-label lg:col-span-3">{eyebrow}</p>
-        <div className="lg:col-span-9">
+        <Reveal className="lg:col-span-3"><p className="section-label">{eyebrow}</p></Reveal>
+        <Reveal delay={0.12} className="lg:col-span-9">
           <h1 className="max-w-5xl text-5xl font-extrabold leading-[0.98] text-foreground sm:text-7xl lg:text-8xl">{title}</h1>
           {text ? <p className="mt-8 max-w-2xl border-l border-primary pl-6 text-lg leading-8 text-muted-foreground">{text}</p> : null}
-        </div>
+        </Reveal>
       </div>
     </section>
   );
