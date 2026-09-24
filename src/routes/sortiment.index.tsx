@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { PageIntro, PhotoPlaceholder, ProductEyebrow } from "@/components/site-layout";
+import { Reveal } from "@/components/reveal";
 import { products } from "@/lib/site-content";
 
 export const Route = createFileRoute("/sortiment/")({
@@ -20,7 +21,7 @@ function SortimentPage() {
     <PageIntro eyebrow="Naše výroba" title="Sortiment" text="Dřevěné výrobky na míru pro novostavby, rekonstrukce i náročné architektonické projekty." />
     <section className="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-20 lg:px-12">
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-        {products.map((product, index) => <article key={product.slug} className="group flex flex-col border border-border bg-card">
+        {products.map((product, index) => <Reveal key={product.slug} delay={(index % 3) * 0.08}><article className="group flex h-full flex-col border border-border bg-card">
           <span className="block h-[3px] w-8 bg-primary transition-[width] duration-300 ease-out group-hover:w-full" aria-hidden="true" />
           <PhotoPlaceholder className="aspect-[4/3]" />
           <ProductEyebrow index={index} category={product.category} className="border-b border-border px-6 py-4 transition-colors duration-300 group-hover:bg-primary-soft/40" />
@@ -31,7 +32,7 @@ function SortimentPage() {
               Detail produktu <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
             </Link>
           </div>
-        </article>)}
+        </article></Reveal>)}
       </div>
     </section>
   </>;
