@@ -7,3 +7,4 @@
 - [x] Kontrola sestavení a responzivního zobrazení
 - [x] Redakční redesign a obsáhlejší úvodní stránka
 - [x] Samostatné podstránky všech devíti produktů
+- [x] Sortiment: 3 sloupce na PC, 1 na telefonu, oddělený produktový nadpis s rezavým akcentem
