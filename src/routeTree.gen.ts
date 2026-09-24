@@ -14,6 +14,7 @@ import { Route as KontaktRouteImport } from './routes/kontakt'
 import { Route as PoptavkaRouteImport } from './routes/poptavka'
 import { Route as ReferenceRouteImport } from './routes/reference'
 import { Route as SortimentRouteImport } from './routes/sortiment'
+import { Route as SortimentIndexRouteImport } from './routes/sortiment.index'
 import { Route as SortimentSlugRouteImport } from './routes/sortiment.$slug'
 
 const IndexRoute = IndexRouteImport.update({
@@ -41,6 +42,11 @@ const SortimentRoute = SortimentRouteImport.update({
   path: '/sortiment',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SortimentIndexRoute = SortimentIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => SortimentRoute,
+} as any)
 const SortimentSlugRoute = SortimentSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
@@ -54,14 +60,15 @@ export interface FileRoutesByFullPath {
   '/reference': typeof ReferenceRoute
   '/sortiment': typeof SortimentRouteWithChildren
   '/sortiment/$slug': typeof SortimentSlugRoute
+  '/sortiment/': typeof SortimentIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/kontakt': typeof KontaktRoute
   '/poptavka': typeof PoptavkaRoute
   '/reference': typeof ReferenceRoute
-  '/sortiment': typeof SortimentRouteWithChildren
   '/sortiment/$slug': typeof SortimentSlugRoute
+  '/sortiment': typeof SortimentIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -71,6 +78,7 @@ export interface FileRoutesById {
   '/reference': typeof ReferenceRoute
   '/sortiment': typeof SortimentRouteWithChildren
   '/sortiment/$slug': typeof SortimentSlugRoute
+  '/sortiment/': typeof SortimentIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -81,14 +89,15 @@ export interface FileRouteTypes {
     | '/reference'
     | '/sortiment'
     | '/sortiment/$slug'
+    | '/sortiment/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/kontakt'
     | '/poptavka'
     | '/reference'
-    | '/sortiment'
     | '/sortiment/$slug'
+    | '/sortiment'
   id:
     | '__root__'
     | '/'
@@ -97,6 +106,7 @@ export interface FileRouteTypes {
     | '/reference'
     | '/sortiment'
     | '/sortiment/$slug'
+    | '/sortiment/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -144,6 +154,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SortimentRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sortiment/': {
+      id: '/sortiment/'
+      path: '/'
+      fullPath: '/sortiment/'
+      preLoaderRoute: typeof SortimentIndexRouteImport
+      parentRoute: typeof SortimentRoute
+    }
     '/sortiment/$slug': {
       id: '/sortiment/$slug'
       path: '/$slug'
@@ -156,10 +173,12 @@ declare module '@tanstack/react-router' {
 
 interface SortimentRouteChildren {
   SortimentSlugRoute: typeof SortimentSlugRoute
+  SortimentIndexRoute: typeof SortimentIndexRoute
 }
 
 const SortimentRouteChildren: SortimentRouteChildren = {
   SortimentSlugRoute: SortimentSlugRoute,
+  SortimentIndexRoute: SortimentIndexRoute,
 }
 
 const SortimentRouteWithChildren = SortimentRoute._addFileChildren(
