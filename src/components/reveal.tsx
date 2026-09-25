@@ -1,5 +1,5 @@
 import { motion, useReducedMotion, type Variants } from "framer-motion";
-import type { ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
 const variants: Variants = {
   hidden: { opacity: 0, y: 24 },
@@ -22,12 +22,16 @@ export function Reveal({
   as?: "div" | "section" | "span";
 }) {
   const reduce = useReducedMotion();
-  const Component = as === "section" ? motion.section : as === "span" ? motion.span : motion.div;
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
-  if (reduce) {
-    return <div className={className}>{children}</div>;
+  // Content stays visible in server HTML and if scripts don't run; animation only after hydration.
+  if (reduce || !mounted) {
+    const Tag = as;
+    return <Tag className={className}>{children}</Tag>;
   }
 
+  const Component = as === "section" ? motion.section : as === "span" ? motion.span : motion.div;
   return (
     <Component
       className={className}
